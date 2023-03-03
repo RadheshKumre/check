@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.16.2",
+    "@shelex/cypress-allure-plugin": "^2.35.0",
+    "cypress": "^11.0.0"
+  }
+}
