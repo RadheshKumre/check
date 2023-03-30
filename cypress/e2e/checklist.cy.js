@@ -38,7 +38,7 @@ const cuspro         =`https://${env}customer.onefin.app/api/customer/customer-p
 const custlog        =`https://${env}customer.onefin.app/api/customer/logout`;
 const custauto       =`https://${env}customer.onefin.app/api/customer/auto-login`;
 const custdele       =`https://${env}customer.onefin.app/api/customer/delete-customer-data`;
-const foryou         ='http://3.110.139.228/api/v1/post/getPostById';//magine prod
+const foryou         ='https://websiteapi.onefin.app/api/v1/post/getForYou';//magine prod
 
 const netwa          = `https://${env}netcore.onefin.app/api/netcore/message/whats-app`;
 const neteml         = `https://${env}netcore.onefin.app/api/netcore/email`;
@@ -295,7 +295,9 @@ describe('cehcklist for backend',()=>{
                     })
             
                 // console.log("The Temp is "+gentemp)
-                // console.log(gentemp)
+                console.log(gentemp)
+                // console.log(temp)
+                console.table(gentemp)
             });
         
         
