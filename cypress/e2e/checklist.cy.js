@@ -50,7 +50,7 @@ const netsms         = `https://${env}netcore.onefin.app/api/netcore/message/sms
 // uat:  https://1finance-node-api.novostack.net/api/
 // Prod: https://1finance-node-api.novostack.net/api-uat/
 
-describe('cehcklist for backend',()=>{
+describe('cehcklist for backend on 29th march',()=>{
 
     //New User 1 new customer
     describe('1 new customer',()=>{
@@ -1821,8 +1821,8 @@ describe('cehcklist for backend',()=>{
                         variables:["Runali", "https://www.africau.edu/images/default/sample.pdf"],
                         templateId:2,
                         to:[{
-                            email:"runali.painaik@atriina.com",
-                            name:"Runali Painaik"
+                            email:"radhesh.kumre@atriina.com",
+                            name:"Radhesh Kumre"
                         }],
                         attachments:[
                             {
@@ -1841,7 +1841,7 @@ describe('cehcklist for backend',()=>{
                     method:'POST',
                     url:netsms,
                     body:{
-                        mobileNumber:"8291684040",
+                        mobileNumber:"9757432264",
                         templateId:1,
                         variables:["iUIGhThyiGHu \n\n 1703","15 mins"]
                     }
@@ -1855,7 +1855,7 @@ describe('cehcklist for backend',()=>{
                     method:"POST",
                     url:netwa,
                     body:{
-                        mobileNumber:"8291684040",
+                        mobileNumber:"9757432264",
                         templateId:9,
                         media:{
                             "type":"document",
