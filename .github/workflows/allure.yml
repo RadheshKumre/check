@@ -28,11 +28,6 @@ jobs:
         if: always()
         run: npx cypress run --env allure=true
         continue-on-error: true
-        
-      - name: Generate allure reports
-        if: always()
-        run: allure generate allure-results 
-        continue-on-error: true
 
       - name: Get Allure history
         uses: actions/checkout@v2
