@@ -50,7 +50,7 @@ const netsms         = `https://${env}netcore.onefin.app/api/netcore/message/sms
 // uat:  https://1finance-node-api.novostack.net/api/
 // Prod: https://1finance-node-api.novostack.net/api-uat/
 
-describe('cehcklist for backend on 29th march',()=>{
+describe('cehcklist for backend',()=>{
 
     //New User 1 new customer
     describe('1 new customer',()=>{
