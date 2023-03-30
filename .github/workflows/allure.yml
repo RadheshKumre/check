@@ -1,9 +1,6 @@
 name: allure-reports
 
-on:
-  push:
-    branches-ignore:
-      - '!master'
+on: [ push ]
 
 jobs:
   autotests:
@@ -27,7 +24,7 @@ jobs:
         run: |
           npm run lint
 
-      - name: Run Test
+      - name: Run checklist
         if: always()
         run: npx cypress run --env allure=true
         continue-on-error: true
@@ -50,8 +47,8 @@ jobs:
         if: always()
         #id: allure-report
         with:
-          allure_results: allure-results
-          #gh_pages: gh-pages
+          allure_results: target/allure-results
+          gh_pages: gh-pages
           #allure_report: allure-report
           allure_history: allure-history
 
