@@ -19,11 +19,6 @@ jobs:
         run: |
           npm install
 
-      - name: Check code style
-        if: always()
-        run: |
-          npm run init
-
       - name: Run checklist
         if: always()
         run: npx cypress run --env allure=true
@@ -54,4 +49,3 @@ jobs:
           PERSONAL_TOKEN: ${{secrets.TOKEN}}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-
-          
