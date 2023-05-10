@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 //Golbal Variables
-const env     = prompt('Select evnviroment dev./qa./uat.:');
+const env     = ""//prompt('Select evnviroment dev./qa./uat.:');
 let email     = 'radhesh.kumre@atriina.com';
 let mobNumber = '2000000000';
 let fname     = 'Radhesh';
