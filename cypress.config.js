@@ -11,6 +11,9 @@ module.exports = {
           },
         env: {
                 allureReuseAfterSpec: true
+    },
+    env: {
+      snapshotOnly: true
     }
   },
 };

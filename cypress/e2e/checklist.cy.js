@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
-const env     = '';
+//Golbal Variables
+const env     = prompt('Select evnviroment dev./qa./uat.:');
 let email     = 'radhesh.kumre@atriina.com';
 let mobNumber = '2000000000';
 let fname     = 'Radhesh';
@@ -20,6 +21,8 @@ let temp      = '';
 let at        = ''; 
 let fillque   = ''; 
 
+
+//APIs for MoneySign
 const questionAns    =`https://${env}ms.onefin.app/api/user/money-sign-quiz`;
 const userValidation =`https://${env}ms.onefin.app/api/user/money-sign`;
 const genMoneySign   =`https://${env}ms.onefin.app/api/user/money-sign/generate`;
@@ -27,6 +30,7 @@ const saveUserQA     =`https://${env}ms.onefin.app/api/user/money-sign/add-respo
 const startass       =`https://${env}ms.onefin.app/api/user/assessment-log`;
 const msfeed         =`https://${env}ms.onefin.app/api/user/money-sign/feedback`;
 
+//APIs for CustomerBE
 const cupcode        =`https://${env}customer.onefin.app/api/customer/moneysign-coupon-code`
 const custgms        =`https://${env}customer.onefin.app/api/customer/money-sign-generated`;
 const custaad        =`https://${env}customer.onefin.app/api/customer/assessment-activity-done`;
@@ -38,19 +42,21 @@ const cuspro         =`https://${env}customer.onefin.app/api/customer/customer-p
 const custlog        =`https://${env}customer.onefin.app/api/customer/logout`;
 const custauto       =`https://${env}customer.onefin.app/api/customer/auto-login`;
 const custdele       =`https://${env}customer.onefin.app/api/customer/delete-customer-data`;
-const foryou         ='https://websiteapi.onefin.app/api/v1/post/getForYou';//magine prod
+// const foryou         ='http://3.110.139.228/api/v1/post/getPostById';//magine prod
 
+//APIs for Website-magazine
+const fycat          ='https://websiteapi.onefin.app/api/v2/post/getForYouByMagazineCategory?category=all';
+const fyrec          ='https://websiteapi.onefin.app/api/v2/post/getRecommendedStoriesForUser?category=fwp_orientation_call';
+const fybid          =`https://websiteapi.onefin.app/api/v1/post/getPostById?id=789`
+
+//APIs for Communications
 const netwa          = `https://${env}netcore.onefin.app/api/netcore/message/whats-app`;
 const neteml         = `https://${env}netcore.onefin.app/api/netcore/email`;
 const netsms         = `https://${env}netcore.onefin.app/api/netcore/message/sms`;
-//qa foryou
+const msg91          = `https://${env}netcore.onefin.app/api/msg/message/sms`
 
-// Dev:  https://1finance.racecondition.io/api/
-// Qa:   https://1finance.racecondition.io/api-qa/
-// uat:  https://1finance-node-api.novostack.net/api/
-// Prod: https://1finance-node-api.novostack.net/api-uat/
 
-describe('cehcklist for backend',()=>{
+describe('Checklist for backend',()=>{
 
     //New User 1 new customer
     describe('1 new customer',()=>{
@@ -296,8 +302,6 @@ describe('cehcklist for backend',()=>{
             
                 // console.log("The Temp is "+gentemp)
                 console.log(gentemp)
-                // console.log(temp)
-                console.table(gentemp)
             });
         
         
@@ -502,23 +506,6 @@ describe('cehcklist for backend',()=>{
             })
         });
 
-        it('For You API',()=>{
-            cy.request({
-                method : 'GET',
-                url    :  `${foryou}`,
-                headers: {
-                    authorization:`F9B3C732768CDA5E1E9A89349C4E6`
-                }
-            }).then((res)=>{
-                expect(res.status).to.eq(200)
-                expect(res.body.meta).to.haveOwnProperty('message')
-                let fd = [];
-                fd.push(res.body.data)
-                cy.log('For You Working')
-                console.log(fd)
-            })
-        });
-
         it('customer profile with vaild accessToken',()=>{
             cy.request({
                 method:'GET',
@@ -675,6 +662,7 @@ describe('cehcklist for backend',()=>{
             cy.log('2 Existing MS Done - Auto Login')
             
         });
+    
         console.log('2 Existing MS Done - Auto Login')
 
     });
@@ -1811,14 +1799,63 @@ describe('cehcklist for backend',()=>{
         });
         console.log('3 Stepped flow for MoneySign Assessment')
     });
-    describe('NetCore APIs',()=>{
+
+    //ForYou Magazine's
+    describe('Website-ForYou-Magazine',()=>{
+
+        it('Magazine by catagory',()=>{
+            cy.request({
+                method : 'GET',
+                url    :  `${fycat}`,
+                headers: {
+                    authorization:`F9B3C732768CDA5E1E9A89349C4E6`
+                }
+            }).then((res)=>{
+                expect(res.status).to.eq(200)
+                expect(res.body.meta).to.haveOwnProperty('message')
+                cy.log('For You Working')
+            })
+        });
+
+        it('Magazine by Recomendation',()=>{
+            cy.request({
+                method : 'GET',
+                url    :  `${fyrec}`,
+                headers: {
+                    authorization:`F9B3C732768CDA5E1E9A89349C4E6`
+                }
+            }).then((res)=>{
+                expect(res.status).to.eq(200)
+                expect(res.body.meta).to.haveOwnProperty('message')
+                cy.log('For You Working')
+            })
+        });
+
+        it('Magazine by ID',()=>{
+            cy.request({
+                method : 'GET',
+                url    :  `${fybid}`,
+                headers: {
+                    authorization:`F9B3C732768CDA5E1E9A89349C4E6`
+                }
+            }).then((res)=>{
+                expect(res.status).to.eq(200)
+                expect(res.body.meta).to.haveOwnProperty('message')
+                cy.log('For You Working')
+            })
+        });
+
+    });
+
+    //NetCore & MSG91
+    describe('NetCore & MSG91 APIs',()=>{
 
             it('NetCore - Email',()=>{
                 cy.request({
                     method:'POST',
                     url:neteml,
                     body:{
-                        variables:["Runali", "https://www.africau.edu/images/default/sample.pdf"],
+                        variables:["Radhesh", "https://www.africau.edu/images/default/sample.pdf"],
                         templateId:2,
                         to:[{
                             email:"radhesh.kumre@atriina.com",
@@ -1869,7 +1906,28 @@ describe('cehcklist for backend',()=>{
                     expect(res.status).to.eq(200)
                 })
             });
-            console.log('NetCore - Done')
+
+            it('MSG91 - SMS',()=>{
+                cy.request({
+                    method:"POST",
+                    url:msg91,
+                    body:{
+                        template_id: 28,
+                        mobile: "9757432264",
+                        authkey: "<string>",
+                        otp: "1001",
+                        request_id: "<string>",
+                        variables: [
+                          "radheshh",
+                          "1F"
+                        ]
+                      }
+                }).then((res)=>{
+                    expect(res.status).to.eq(200)
+                })
+            });
+
+            console.log('NetCore & MSG91- Done')
     });
     
 });

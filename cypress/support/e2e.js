@@ -18,6 +18,7 @@ import './commands'
 import '@shelex/cypress-allure-plugin';
 require('@shelex/cypress-allure-plugin');
 import 'cypress-mochawesome-reporter/register';
+import 'cypress-plugin-api'
 
 
 // Alternatively you can use CommonJS syntax:
