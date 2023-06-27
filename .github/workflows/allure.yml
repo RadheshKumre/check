@@ -2,6 +2,7 @@ name: allure-reports
 
 on: [ push ]
 
+
 jobs:
   autotests:
     name: Run tests and generate Allure Report
